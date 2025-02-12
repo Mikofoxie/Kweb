@@ -44,6 +44,16 @@
         top: 0%;
         right: 0%;
     }
+    .title {
+        font-size: 14.6rem !important;
+    }
+    .content .about .desc, .content .works .desc, .content .contact .desc {
+        font-size: 4.8rem;
+    }
+
+    .content .about .desc::before, .content .works .desc::before, .content .contact .desc::before {
+        font-size: 2.7;
+    }
 }
 
 @media (min-width: 45.5rem) and (max-width: 83.125rem) {
@@ -82,5 +92,103 @@
     .work__genre {
         font-size: 2.2rem;
         padding: 6px 16px 4px;
+    }
+}
+
+@media (max-width: 47.625rem) {
+    .works__wrapper {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr)
+    }
+    .about__wrapper__desktop{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .about__icon {
+        margin: 0 0 30px 0;
+    }
+    .about__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .about__item__title, .about__item__title span {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+    .about__item__skill {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .header{
+        padding: 20px 16px
+    }
+    .header .header__title .logo {
+        margin: 0;
+    }
+    .header .header__title .logo img{
+        width: 60%;
+    }
+    .header__nav > ul > li {
+        margin-left: 28px;
+    }
+    .wrap__icon{
+        width: 300px;
+        height: 300px;
+    }
+
+    .about__item__name {
+        font-size: 2.6rem;
+    }
+
+    .about__item__link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .about__item__link > a {
+        margin-top: 16px;
+        text-align: center;
+        padding: 8px 80px 6px;
+
+    }
+    .work__class {
+        padding: 7px 22px;
+        font-size: 1.6rem;
+    }
+    .work__genre {
+        padding: 6px 13px 4px;
+        font-size: 1.8rem;
+    }
+    .content .about > h1, .content .works > h1, .content .contact > h1 {
+        font-size: 5.2rem;
+    }
+
+    .content .about, .content .works, .content .contact {
+        padding: 0 16px;
+    }
+    .content .about .title, .content .works .title, .content .contact .title {
+        line-height: 1;
+    }
+    .content .about .desc, .content .works .desc, .content .contact .desc {
+        align-items: start;
+        font-size: 2.3rem;
+    }
+    .content > section {
+        margin-top: 40px;
+    }
+    .header > .header__title p,
+    .header a {
+        font-size: 1.8rem;
+    }
+    .header a p{
+        margin-left: -30px;
+    }
+    .content .about .desc::before, .content .works .desc::before, .content .contact .desc::before {
+        margin-top: 1px;
     }
 }
