@@ -1,0 +1,47 @@
+Folder PATH listing
+Volume serial number is C9FF-3CD0
+C:.
+|   structure.txt
+|   
++---assets
+|   +---fonts
+|   |       NATS-Regular.ttf
+|   |       NATS-Regular.woff
+|   |       NATS-Regular.woff2
+|   |       RussoOne-Regular.ttf
+|   |       RussoOne-Regular.woff
+|   |       
+|   \---imgs
+|       |   logo.png
+|       |   pfp.png
+|       |   
+|       +---favicon
+|       |       android-chrome-192x192.png
+|       |       android-chrome-512x512.png
+|       |       apple-touch-icon.png
+|       |       favicon-16x16.png
+|       |       favicon-32x32.png
+|       |       favicon.ico
+|       |       site.webmanifest
+|       |       
+|       \---works
+|               DaESZLGEHQo-HD.jpg
+|               
++---css
+|       responsive.css
+|       style.css
+|       
++---js
+|   |   app.js
+|   |   
+|   \---pages
+|           home.js
+|           main.js
+|           video.js
+|           works.js
+|           
+\---public
+        index.html
+        video.html
+        works.html
+        

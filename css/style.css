@@ -27,6 +27,7 @@ html {
     font-size: 62.5%;
     font-family: "Nats", sans-serif;
     line-height: 1.5;
+    scroll-behavior: smooth;
     
  }
 
@@ -41,6 +42,19 @@ body {
     font-smooth: always;
       
 }
+
+.initial-loading {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out;
+}
+
+.loaded {
+    opacity: 1;
+    visibility: visible;
+}
+
+
   
 :root{
     --primary-color: #FF4081;
@@ -123,6 +137,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 .content .works .title,
 .content .contact .title{
     position: relative;
+    font-size: 10.6rem;
     display: flex;
     align-items: center;
     line-height: .7;
@@ -152,14 +167,15 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 .content .about .desc::before,
 .content .works .desc::before,
 .content .contact .desc::before{
-    content: '▶';
+    content: '▸';
     margin-right: 10px;
-    font-size: 2.4rem;
-    margin-top: 8px;
+    margin-left: -13px;
+    font-size: 5rem;
+    margin-bottom: -8px;
     vertical-align: baseline;
 }
 
-.about__wrapper__desktop {
+.about__wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -429,6 +445,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     cursor: pointer;
     transition: fill 0.3s;
     margin-left: 20px;
+    margin-top: 28px;
   }
 
   .copy__discord:hover {
@@ -469,6 +486,127 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     opacity: 1;
     transform: translateY(0);
   }
+
+/*                             Works page                              */
+.works__genre {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.works__genre__button {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.works__genre__button button {
+    display: inline-block;
+    padding: 6px 24px 4px;
+    border: 2px solid var(--primary-color);
+    border-radius: 100vmax;
+    font-size: 15px;
+    color: var(--primary-color);
+    transition: .3s;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.works__genre__button button:hover {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+/*                             Videos page                             */
+.page {
+    padding: 0 60px;
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.page__title {
+    display: inline-block;
+    padding: .6rem 2rem .4rem;
+    font-size: 8.4rem;
+    line-height: 1.25;
+    margin-top: 10px;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+.page__heading {
+    margin-top: 15px;
+}
+
+.page__artist {
+    display: inline-block;
+    padding: .85rem 2rem .6rem;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.page__wrapper {
+    display: block;
+    margin-top: 90px;
+}
+
+.page__youtube {
+    width: 100%;
+    max-width: 1366px;
+    aspect-ratio: 16/9;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.page__youtube iframe {
+    width: 100%;
+    height: 100%;
+    border-style: none;
+}
+
+.page__about {
+    margin: 75px auto 120px;
+    max-width: 1366px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30rem;
+    grid-row-gap: 0;
+}
+.page__credit {
+    grid-area: 1/1/2/3;
+    margin-right: 30px;
+}
+.page__credit__title,
+.page__desc__title{
+    text-align: left;
+    line-height: 1.5;
+    font-size: 4.6rem;
+    color: var(--primary-color);
+}
+.page__about p {
+    text-align: left;
+    line-height: 2.2;
+    font-size: 2.3rem;
+    color: #e21915;
+    color: var(--primary-color);
+}
+.page__desc {
+    grid-area: 1/2/2/4;
+}
+
+.page__review {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px
+}
+
+.page__review img {
+    width: 100%;
+}
 /*                             Animation frames                        */
 
   @keyframes shimmer {
@@ -500,4 +638,21 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     100% {
       transform: scale(1) rotate(0deg);
     }
+  }
+
+
+  .content {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  
+  /* Khi thêm class .fade-out, nội dung sẽ mờ dần đi */
+  .content.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  /* Nếu muốn hiệu ứng fade-in rõ ràng hơn, có thể thêm class cho fade-in */
+  .content.fade-in {
+    opacity: 1;
   }
