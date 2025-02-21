@@ -1,6 +1,7 @@
 class Router {
     constructor() {
         this.app = document.querySelector('.app');
+        this.contentDiv = document.querySelector('.content');
         this.isInitialLoad = true;
         this.routes = {
             home: '../js/pages/home.js',
@@ -11,58 +12,57 @@ class Router {
     }
 
     init() {
-        document.querySelectorAll('a[data-route]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-    
-                const routeLink = e.target.closest('a[data-route]');
-                if (!routeLink) return;
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[data-route]');
+            if (!link) return;
 
-                const route = routeLink.dataset.route;
-                if (route && this.routes[route]) {
-                    this.navigateTo(route);
-                }
-            });
+            e.preventDefault();
+        
+            const href = link.getAttribute('href');
+            if (href) {
+        
+                window.location.hash = href.slice(1);
+            }
         });
 
-        // Hash event
-        window.addEventListener('hashchange', () => {
-            const route = window.location.hash.slice(1) || 'home';
-            this.loadPage(route);
-            
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-            }, 10);
-        });
+        // (hashchange)
+        window.addEventListener('hashchange', () => this.handleRouteChange());
 
-        const initialRoute = window.location.hash.slice(1) || 'home';
-        this.loadPage(initialRoute);
+        
+        this.handleRouteChange();
     }
 
     navigateTo(route) {
         window.location.hash = route;
     }
 
-    async loadPage(route) {
-        const contentDiv = document.querySelector('.content');
+    async handleRouteChange() {
+        const hash = window.location.hash.slice(1) || 'home';
+        let [routeName, slug] = hash.includes('/') ? hash.split('/') : [hash, null];
 
+        if (!this.routes[routeName]) {
+            this.showNotFound();
+            return;
+        }
+
+        await this.loadPage(routeName, slug);
+    }
+
+    async loadPage(routeName, slug) {
         if (this.isInitialLoad) {
             this.app.classList.remove('loaded');
         }
 
-        contentDiv.classList.add('fade-out');
+        this.contentDiv.classList.add('fade-out');
         await new Promise(resolve => setTimeout(resolve, 400));
 
         try {
-            const module = await import(`./${this.routes[route]}`);
-            contentDiv.innerHTML = await module.default();
+            const module = await import(`./${this.routes[routeName]}`);
+            this.contentDiv.innerHTML = slug ? await module.default(slug) : await module.default();
 
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
+            setTimeout(() => {
+                window.scrollTo({top: 0,behavior: "smooth"});
+            }, 10);
 
             if (this.isInitialLoad) {
                 setTimeout(() => {
@@ -71,15 +71,19 @@ class Router {
                 }, 50);
             }
         } catch (error) {
-            contentDiv.innerHTML = '<h2>404 - Page Not Found</h2>';
+            this.showNotFound();
             console.error("Error loading page:", error);
-            if (this.isInitialLoad) {
-                this.app.classList.add('loaded');
-                this.isInitialLoad = false;
-            }
         }
 
-        contentDiv.classList.remove('fade-out');
+        this.contentDiv.classList.remove('fade-out');
+    }
+
+    showNotFound() {
+        this.contentDiv.innerHTML = '<div class="error-message"><h2>404 - Page Not Found</h2></div>';
+        if (this.isInitialLoad) {
+            this.app.classList.add('loaded');
+            this.isInitialLoad = false;
+        }
     }
 }
 

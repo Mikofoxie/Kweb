@@ -23,7 +23,7 @@
         font-size: 2.6rem;
     }
     .works__viewmore__link {
-        font-size: 2.8rem;
+        font-size: 3.4rem;
     }
     .copy__discord {
         width: 60px;
@@ -51,20 +51,29 @@
         font-size: 4.8rem;
     }
 
-    .content .about .desc::before, .content .works .desc::before, .content .contact .desc::before {
-        font-size: 2.7;
-    }
+   
     
     .page__credit__title, .page__desc__title {
         font-size: 5.6rem;
     }
-
+    .page__about {
+        max-width: 1600px;
+        grid-column-gap: 45px;
+    }
     .page__about p {
-        font-size: 3.3rem;
+        font-size: 2rem;
+    }
+
+    .works__genre__button button {
+        font-size: 2.2rem;
+    }
+
+    .page__credit {
+        margin-right: 10rem;
     }
 }
 
-@media (min-width: 48.563rem) and (max-width: 83.125rem) {
+@media (min-width: 45rem) and (max-width: 76rem) {
     .about__wrapper {
         flex-direction: column-reverse;
         align-items: center;
@@ -91,7 +100,7 @@
     }
     .about__item__link > a,
     .works__viewmore__link {
-        font-size: 2.8rem;
+        font-size: 2.0rem;
     }
     .work__class {
         padding: 7px 16px 6px;
@@ -103,8 +112,12 @@
     }
 }
 
-@media (max-width: 48.5rem) {
+@media (max-width: 53.875rem) {
+    .work__wrapper {
+        margin-top: 10px;
+    }
     .works__wrapper {
+        margin-top: 6px !important;
         width: 100%;
         grid-template-columns: repeat(1, 1fr)
     }
@@ -123,6 +136,9 @@
         justify-content: center;
         align-items: center;
     }
+    .page__credit__title, .page__desc__title {
+        margin-bottom: 6px;
+    }
     .about__item__title, .about__item__title span {
         text-align: center;
         font-size: 2.5rem;
@@ -136,12 +152,18 @@
         padding: 20px 16px
     }
     .header .header__title .logo {
-        margin: 0;
+        margin-left: 10px;
+        padding-top: 9px;
     }
     .header .header__title .logo img{
-        width: 60%;
+        width: 55%;
+    }
+
+    .header__title > p {
+        display: none;
     }
     .header__nav > ul > li {
+        margin-bottom: 2px;
         margin-left: 28px;
     }
     .wrap__icon{
@@ -173,10 +195,10 @@
     }
     .work__class {
         padding: 7px 22px;
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .work__genre {
-        padding: 6px 13px 4px;
+        padding: 6px 16px 5px;
         font-size: 1.8rem;
     }
     .content .about > h1, .content .works > h1, .content .contact > h1 {
@@ -187,12 +209,13 @@
         padding: 0 16px;
     }
     .content .about .title, .content .works .title, .content .contact .title {
-        font-size: 4.6rem;
+        font-size: 5.2rem;
         line-height: 1;
     }
     .content .about .desc, .content .works .desc, .content .contact .desc {
         align-items: start;
-        font-size: 2.3rem;
+        font-size: 2.2rem;
+        /* height: 35px; */
     }
     .content > section {
         margin-top: 20px;
@@ -205,18 +228,20 @@
         margin-left: -30px;
     }
     .content .about .desc::before, .content .works .desc::before, .content .contact .desc::before {
-        margin-top: -17px;
-        margin-left: -13px;
+        font-size: 4rem;
+        margin-top: -8px;
+        margin-left: 0px;
     }
     .contact__wrapper {
         margin-top: 40px;
     }
+    
     .page__review {
         grid-template-columns: repeat(1,1fr);
     }
     .page__title {
-        font-size: 3rem;
-        padding: .25rem 1rem .2rem;
+        font-size: 3.4rem;
+        padding: .30rem 2rem .30rem;
     }
 
     .page {
@@ -224,21 +249,41 @@
         padding: 0 16px;
     }
     .page__artist {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
     }
     .page__wrapper {
         margin-top: 30px;
     }
     .page__credit__title, .page__desc__title {
-        line-height: 1.5;
+        line-height: 1.3;
     }
 
     .page__about p {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
     .footer {
         margin-top: 70px;
     }
+    .page__artist {
+        padding: .75rem 2rem .74rem;
+    }
+
+    .works__viewmore__link {
+        font-size: 2rem;
+        padding: 8px 20px;
+        border: 2px solid var(--primary-color);
+    }
+    .works__genre__button {
+        margin-right: 6px;
+    }
+    .works__genre__button button {
+        padding: 6px 14px 6px;
+        font-size: 1.2rem;
+    }
+    .works__genre {
+        margin-top: 0px;
+    }
+    
 }
 
 @media (max-width: 63.938rem) {
@@ -248,5 +293,11 @@
     }
     .page__desc {
         margin-top: 30px;
+    }
+}
+
+@media (max-width: 32.5rem) {
+    .contact__mail, .contact__discord{
+        font-size: 2.4rem;
     }
 }

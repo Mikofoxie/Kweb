@@ -15,6 +15,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Noto Sans JP;
+    src:url('..//assets//fonts//NotoSansJP-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Noto Sans JP Regular;
+    src:url('..//assets//fonts//NotoSansJP-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -25,11 +39,15 @@
 }
 html {
     font-size: 62.5%;
-    font-family: "Nats", sans-serif;
+    font-family: "Russo One", sans-serif;
     line-height: 1.5;
     scroll-behavior: smooth;
     
  }
+
+html, body {
+    height: 100%;
+}
 
 body {
     user-select: none;
@@ -43,6 +61,38 @@ body {
       
 }
 
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+@-moz-document url-prefix() {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #ffb7c5 #fff0f5;
+    }
+  }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffe6f2;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff99cc, #ff66b2);
+    border-radius: 10px;
+    border: 2px solid #ffe6f2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff66b2, #ff3385);
+}
+
+
 .initial-loading {
     opacity: 0;
     visibility: hidden;
@@ -54,7 +104,9 @@ body {
     visibility: visible;
 }
 
-
+.content{
+    flex: 1;
+}
   
 :root{
     --primary-color: #FF4081;
@@ -82,6 +134,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     color: white;
     color: var(--white-color);
     text-decoration: none;
+    font-weight: 800;
 }
 
 .header__title {
@@ -109,12 +162,27 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 .header__nav > ul > li {
     margin-left: 45px;
     font-size: 2.4rem;
-
+    margin-top: 1px;
 }
 
 .header__nav > ul > li > a:hover{
     opacity: .5;
 }
+
+.content {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  
+.content.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+  
+.content.fade-in {
+    opacity: 1;
+}
+
 
 .content .about,
 .content .works,
@@ -162,6 +230,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     font-size: 2.8em;
     font-weight: 500;
     letter-spacing: 0;
+    line-height: 1.1;
 }
 
 .content .about .desc::before,
@@ -171,7 +240,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     margin-right: 10px;
     margin-left: -13px;
     font-size: 5rem;
-    margin-bottom: -8px;
+    margin-bottom: -7px;
     vertical-align: baseline;
 }
 
@@ -179,7 +248,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 90px auto;
+    margin: 60px auto;
 }
 
 .about__item__name {
@@ -192,14 +261,14 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 
 .about__item__title,
 .about__item__title span {
-    font-size: 4rem;
+    font-size: 3.1rem;
     margin-top: 15px;
     font-weight: 600;
 }
 
 .about__item__skill {
     margin-top: 8px;
-    font-size: 2.7rem;
+    font-size: 2.4rem;
 }
 
 .about__item__skill > span {
@@ -380,8 +449,14 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     border-radius: 100vmax;
 }
 
+
+.work__link {
+    position: relative;
+}
 .work__link__image  {
     width: 100%;
+    border: 0;
+    vertical-align: top;
 }
 
 .works__viewmore {
@@ -394,7 +469,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     text-decoration: none;
     color: var(--primary-color);
     font-size: 2rem;
-    padding: 12px 28px;
+    padding: 12px 40px;
     border-radius: 50px;
     transition: .4s;
     border: 1px solid var(--primary-color);
@@ -453,7 +528,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
   }
 
 .footer {
-    margin-top: 140px;
+    margin-top: 90px;
     padding: 80px 0;
     background-color: var(--primary-color);
 }
@@ -493,6 +568,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     flex-wrap: wrap;
     margin-top: 15px;
     margin-bottom: 30px;
+    align-items: center;
 }
 .works__genre__button {
     margin-top: 15px;
@@ -525,12 +601,13 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 }
 .page__title {
     display: inline-block;
-    padding: .6rem 2rem .4rem;
-    font-size: 8.4rem;
+    padding: 0.1rem 3rem .1rem;
+    font-size: 11.0rem;
     line-height: 1.25;
     margin-top: 10px;
     color: var(--white-color);
     background-color: var(--primary-color);
+    letter-spacing: .03em;
 }
 .page__heading {
     margin-top: 15px;
@@ -538,8 +615,8 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 
 .page__artist {
     display: inline-block;
-    padding: .85rem 2rem .6rem;
-    font-size: 6rem;
+    padding: .80rem 3rem .80rem;
+    font-size: 4rem;
     line-height: 1;
     color: var(--white-color);
     background-color: var(--primary-color);
@@ -565,18 +642,19 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     border-style: none;
 }
 
+
 .page__about {
     margin: 75px auto 120px;
     max-width: 1366px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    display: grid
+;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 30rem;
+    grid-column-gap: 60px;
     grid-row-gap: 0;
 }
 .page__credit {
-    grid-area: 1/1/2/3;
-    margin-right: 30px;
+    grid-area: 1 / 1 / 2 / 3;
 }
 .page__credit__title,
 .page__desc__title{
@@ -584,16 +662,18 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
     line-height: 1.5;
     font-size: 4.6rem;
     color: var(--primary-color);
+    font-weight: 900;
+    letter-spacing: .01em;
 }
 .page__about p {
     text-align: left;
-    line-height: 2.2;
+    line-height: 1.7;
     font-size: 2.3rem;
     color: #e21915;
     color: var(--primary-color);
 }
 .page__desc {
-    grid-area: 1/2/2/4;
+    grid-area: 1 / 3 / 4 / 5;
 }
 
 .page__review {
@@ -606,7 +686,72 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
 
 .page__review img {
     width: 100%;
+    height: 100%;
 }
+
+.page__credit__html p,
+.page__desc__html p {
+    font-family: "Noto Sans JP Regular";
+    white-space: pre-line;
+    letter-spacing: .02em;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+
+
+
+.error-message {
+    font-family: 'Segoe UI', sans-serif;
+    color: #d32f2f;
+    text-align: center;
+    background-color: #ffe5e5;
+    border: 2px dashed #d32f2f;
+    padding: 20px;
+    margin: 90px auto 0;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+  .error-message h2 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  .work__link__wrapper{
+    width: 100%;
+    
+  }
+  .work__link__title {
+    font-family: "Noto Sans JP";
+    position: absolute;
+    padding: 30px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    color: transparent;
+    background-color: transparent;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    width: 100%;
+}
+.work__link__title > h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+  
+
+  .work__link__title:hover {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+  }
+
+  
 /*                             Animation frames                        */
 
   @keyframes shimmer {
@@ -641,18 +786,7 @@ a, body, button, h1, h2, h3, h4, h5, h6, p, span {
   }
 
 
-  .content {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
-  
-  /* Khi thêm class .fade-out, nội dung sẽ mờ dần đi */
-  .content.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
-  
-  /* Nếu muốn hiệu ứng fade-in rõ ràng hơn, có thể thêm class cho fade-in */
-  .content.fade-in {
-    opacity: 1;
-  }
+ 
+
+
+
